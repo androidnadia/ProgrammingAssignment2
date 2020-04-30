@@ -11,8 +11,8 @@ makeCacheMatrix <- function(x = matrix()) {
       inv <<- NULL
     }
     get <- function() x                                 ## get inv matrix
-    setinv <- function(inverse) inv <<- inverse         ## function inverse
-    getinv <- function() m
+    setinv <- function(inverse) inv <<- inverse         ## set function inverse
+    getinv <- function() inv                            ## get inv matrix
     list(set = set, get = get,
          setmat = setinv,
          getmat = getinv)
@@ -31,8 +31,8 @@ cacheSolve <- function(x, ...) {
       return(inv)
     }
     data <- x$get()
-    inv <- solve(data, ...)                                 ##solve inv matrix
+    inv <- solve(data, ...)                             ##solve inv matrix
     x$setinv(inv)
-    inv
+    inv                                                 ## return inv matrix
   }
 }
